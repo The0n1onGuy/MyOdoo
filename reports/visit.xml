@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="action_report_visit_card" model="ir.actions.report">
+                <field name="name">Informe visita</field>
+                <field name="model">custom_crm.visit</field>
+                <field name="report_type">qweb-pdf</field>
+                <field name="report_name">custom_crm.report_visit_card</field>
+                <field name="report_file">custom_crm.report_visit_card</field>
+                <field name="print_report_name">'Informe Visita - %s' % (object.name)</field>
+                <!-- This line adds the button to the 'Print' menu automatically -->
+                <field name="binding_model_id" ref="model_custom_crm_visit"/>
+                <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

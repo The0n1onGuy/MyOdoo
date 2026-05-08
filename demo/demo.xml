@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+            <record id="demo_partner_1" model="res.partner">
+                <field name="name">Cliente Importado</field>
+            </record>
+          <record id="visit0" model="custom_crm.visit">
+            <field name="name">Visita importada</field>
+            <field name="customer" ref="demo_partner_1" />
+            <field name="date">2026-03-05</field>
+            <field name="type">P</field>
+            <field name="done">1</field>
+          </record>
+
+    </data>
+</odoo>
