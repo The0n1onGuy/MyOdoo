@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <template id="storefront_layout" name="Storefront Layout">
+        <template id="storefront_layout" name="">
             <t t-call="website.layout">
                 <div id="wrap" class="container mt-5">
                     <div class="row">
@@ -21,7 +21,7 @@
                                         <h5 class="card-title font-weight-bold" t-field="product.name"/>
                                         <p class="card-text text-muted small" t-field="product.sku"/>
                                         <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-                                            <span class="h5 mb-0 text-primary">$<t t-esc="product.base_price"/></span>
+                                            <span class="h5 mb-0 text-primary">$<span t-field="product.base_price"/></span>
                                             <button class="btn btn-outline-dark btn-sm rounded-pill px-3 add-to-cart"
                                                     t-att-data-product-id="product.id">
                                                 Seleccionar
@@ -34,6 +34,17 @@
                     </div>
                 </div>
             </t>
+        </template>
+        <template id="product_card_inherit" inherit_id="shopping_cart.storefront_layout">
+            <xpath expr="//span[@t-field='product.base_price']" position="replace">
+                <t t-if="product.discounted_price &lt; product.base_price">
+                    <small class="text-muted text-decoration-line-through">$<t t-esc="product.base_price"/></small>
+                    <span class="h5 mb-0 text-danger ms-2">$<t t-esc="'%.2f' % product.discounted_price"/></span>
+                </t>
+                <t t-else="">
+                    <span class="h5 mb-0 text-primary">$<t t-esc="product.base_price"/></span>
+                </t>
+            </xpath>
         </template>
     </data>
 </odoo>
