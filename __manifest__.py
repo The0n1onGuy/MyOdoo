@@ -23,6 +23,7 @@
     'data': [
         'views/views.xml'
         ,'views/templates.xml'
+        ,'views/website_templates.xml'
         ,'demo/demo.xml'
         #,'reports/visit.xml'
         ,'security/ir.model.access.csv'

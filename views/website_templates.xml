@@ -1,0 +1,26 @@
+<odoo>
+    <template id="custom_footer" inherit_id="website.footer_custom" name="Custom Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <footer class="bg-dark text-white pt-5 pb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>OnionSale</h5>
+                            <p>El agradable marketplace</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Soporte</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="/contactus" class="text-white-50">Contacto</a></li>
+                                <li><a href="#" class="text-white-50">Términos de Servicio</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <p>© 2026 OnionSales. Todos los derechos reservados.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+</odoo>

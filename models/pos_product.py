@@ -9,7 +9,11 @@ class PosProduct(models.Model):
     uuid = fields.Char(string="UUID", default=lambda self: str(uuid.uuid4()), readonly=True)
     sku = fields.Char(string="SKU", required=True)
     base_price = fields.Float(string="Precio Base", digits=(10, 2), required=True)
-
+    inventory_id = fields.One2many(
+        'pos.inventory',
+        'product_id',
+        string="Inventario"
+    )
     category_id = fields.Many2one('pos.category', string="Categoría", required=True)
     status_id = fields.Many2one('pos.status', string="Estado", required=True)
 
@@ -19,7 +23,7 @@ class PosProduct(models.Model):
     )
 
     # Inverse relationship to see inventory from product
-    inventory_id = fields.One2many('pos.inventory', 'product_id', string="Inventario")
+    #inventory_id = fields.One2many('pos.inventory', 'product_id', string="Inventario")
 
     @api.depends('base_price')
     def _compute_discounted_price(self):

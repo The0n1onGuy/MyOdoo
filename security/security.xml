@@ -1,18 +1,22 @@
 <odoo>
-    <data>
-<!--        <record id="custom_category_security" model="ir.module.category">-->
-<!--                <field name="name">Estudiantes</field>-->
-<!--                <field name="description">Grupos de seguridad para estudiantes</field>-->
-<!--        </record>-->
-<!--        <record id="custom_privilege" model="res.group.privilege">-->
-<!--                <field name="name">Estudiantes</field>-->
-<!--                <field name="category_id" ref = "custom_crm.custom_category_security"/>-->
-<!--        </record>-->
+    <data noupdate="0">
+        <record id="module_category_shopping_cart" model="ir.module.category">
+            <field name="name">Nexus Shopping Cart</field>
+            <field name="description">Niveles de acceso para la tienda</field>
+            <field name="sequence">20</field>
+        </record>
 
-<!--        <record id="custom_group_access" model="res.groups">-->
-<!--                <field name="name">Acceso Estudiantes</field>-->
-<!--                <field name="privilege_id" ref = "custom_crm.custom_privilege"/>-->
-<!--        </record>-->
+        <record id="group_shopping_user" model="res.groups">
+            <field name="name">Usuario / Comprador</field>
+            <field name="category_id" ref="module_category_shopping_cart"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
 
+        <record id="group_shopping_manager" model="res.groups">
+            <field name="name">Administrador / Nexus Manager</field>
+            <field name="category_id" ref="module_category_shopping_cart"/>
+            <field name="implied_ids" eval="[(4, ref('group_shopping_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
     </data>
 </odoo>

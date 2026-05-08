@@ -1,7 +1,90 @@
 <odoo>
   <data>
+
     <record id="website.default_website" model="website">
       <field name="name">OnionSale</field>
     </record>
+    <record id="view_pos_product_form" model="ir.ui.view">
+    <field name="name">pos.product.form</field>
+    <field name="model">pos.product</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="oe_title">
+                    <h1><field name="name" placeholder="Nombre del Producto"/></h1>
+                    <h3>SKU: <field name="sku"/></h3>
+                </div>
+                <notebook>
+                    <page string="General" name="general_info">
+                        <group>
+                            <field name="category_id"/>
+                            <field name="base_price"/>
+                            <field name="discounted_price" readonly="1"/>
+                        </group>
+                    </page>
+                    <page string="Inventario" name="inventory">
+                        <group>
+                            <field name="inventory_id" context="{'default_product_id': active_id}">
+                                <tree editable="bottom">
+                                    <field name="current_stock"/>
+                                    <field name="min_stock"/>
+                                    <field name="last_restock_date"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <record id="view_pos_bundle_form" model="ir.ui.view">
+    <field name="name">pos.bundle.form</field>
+    <field name="model">pos.bundle</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <field name="is_seasonal_offer" widget="boolean_toggle"/>
+                <span>¿Es oferta de temporada?</span>
+            </header>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="reference"/>
+                </group>
+                <notebook>
+                    <page string="Productos Incluidos">
+                        <field name="line_ids">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Configuración de Precio">
+                        <group>
+                            <field name="total_normal_value" decoration-info="1"/>
+                            <field name="bundle_price" widget="monetary" string="Precio Final del Bundle"/>
+                            <p class="text-muted">Nota: El precio por defecto aplica un 10% de descuento sobre el valor normal.</p>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <menuitem id="menu_shopping_cart_root"
+          name="Nexus Market"
+          web_icon="shopping_cart,static/description/icon.png"
+          groups="shopping_cart.group_shopping_manager"/> <menuitem id="menu_offers_tab"
+          name="Ofertas Activas"
+          parent="menu_shopping_cart_root"
+          action="action_pos_offer"
+          sequence="10"
+          groups="shopping_cart.group_shopping_manager"/>
+    <menuitem id="menu_offers_tab" name="Ofertas Activas" parent="menu_shopping_cart_root" action="action_pos_offer" sequence="10"/>
+    <menuitem id="menu_bundles_tab" name="Paquetes (Bundles)" parent="menu_shopping_cart_root" action="action_pos_bundle" sequence="20"/>
+    <menuitem id="menu_products_tab" name="Productos e Inventario" parent="menu_shopping_cart_root" action="action_pos_product" sequence="30"/>
+
   </data>
 </odoo>

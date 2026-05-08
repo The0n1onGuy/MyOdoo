@@ -6,3 +6,12 @@ access_pos_category,access_pos_category,model_pos_category,base.group_user,1,1,1
 access_pos_inventory,access_pos_inventory,model_pos_inventory,base.group_user,1,1,1,1
 access_pos_inventory_movement,access_pos_inventory_movement,model_pos_inventory_movement,base.group_user,1,1,1,1
 access_pos_product,access_pos_product,model_pos_product,base.group_user,1,1,1,1
+access_pos_bundle,access_pos_bundle,model_pos_bundle,base.group_user,1,1,1,1
+access_pos_offer,access_pos_offer,model_pos_offer,base.group_user,1,1,1,1
+
+access_product_user,pos.product.user,model_pos_product,group_shopping_user,1,0,0,0
+access_product_manager,pos.product.manager,model_pos_product,group_shopping_manager,1,1,1,1
+access_bundle_user,pos.bundle.user,model_pos_bundle,group_shopping_user,1,0,0,0
+access_bundle_manager,pos.bundle.manager,model_pos_bundle,group_shopping_manager,1,1,1,1
+access_offer_manager,pos.offer.manager,model_pos_offer,group_shopping_manager,1,1,1,1
+access_inventory_manager,pos.inventory.manager,model_pos_inventory,group_shopping_manager,1,1,1,1
