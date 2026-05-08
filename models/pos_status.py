@@ -1,8 +1,8 @@
 from odoo import models, fields, api
 import uuid
 
-class Gen_Status(models.Model):
-    _name = 'nexus.status'
+class pos_status(models.Model):
+    _name = 'pos.status'
     _description = 'Core Status Model'
 
     name = fields.Char(string="Nombre", required=True)

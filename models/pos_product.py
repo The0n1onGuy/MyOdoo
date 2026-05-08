@@ -11,7 +11,7 @@ class PosProduct(models.Model):
     base_price = fields.Float(string="Precio Base", digits=(10, 2), required=True)
 
     category_id = fields.Many2one('pos.category', string="Categoría", required=True)
-    status_id = fields.Many2one('nexus.status', string="Estado", required=True)
+    status_id = fields.Many2one('pos.status', string="Estado", required=True)
 
     # Inverse relationship to see inventory from product
     inventory_id = fields.One2many('pos.inventory', 'product_id', string="Inventario")

@@ -1,18 +1,18 @@
 <odoo>
     <data>
-        <record id="custom_category_security" model="ir.module.category">
-                <field name="name">Estudiantes</field>
-                <field name="description">Grupos de seguridad para estudiantes</field>
-        </record>
-        <record id="custom_privilege" model="res.group.privilege">
-                <field name="name">Estudiantes</field>
-                <field name="category_id" ref = "custom_crm.custom_category_security"/>
-        </record>
+<!--        <record id="custom_category_security" model="ir.module.category">-->
+<!--                <field name="name">Estudiantes</field>-->
+<!--                <field name="description">Grupos de seguridad para estudiantes</field>-->
+<!--        </record>-->
+<!--        <record id="custom_privilege" model="res.group.privilege">-->
+<!--                <field name="name">Estudiantes</field>-->
+<!--                <field name="category_id" ref = "custom_crm.custom_category_security"/>-->
+<!--        </record>-->
 
-        <record id="custom_group_access" model="res.groups">
-                <field name="name">Acceso Estudiantes</field>
-                <field name="privilege_id" ref = "custom_crm.custom_privilege"/>
-        </record>
+<!--        <record id="custom_group_access" model="res.groups">-->
+<!--                <field name="name">Acceso Estudiantes</field>-->
+<!--                <field name="privilege_id" ref = "custom_crm.custom_privilege"/>-->
+<!--        </record>-->
 
     </data>
 </odoo>

@@ -1,3 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_crm_custom_visit,custom_crm.custom_visit,model_custom_crm_visit,base.group_user,1,1,1,1
-access_custom_crm_representatives,custom_crm.representatives,model_custom_crm_representatives,base.group_user,1,1,1,1
+access_pos_sale,access_pos_sale,model_pos_sale,base.group_user,1,1,1,1
+access_pos_sale_detail,access_pos_sale_detail,model_pos_sale_detail,base.group_user,1,1,1,1
+access_pos_status,access_pos_status,model_pos_status,base.group_user,1,1,1,1
+access_pos_category,access_pos_category,model_pos_category,base.group_user,1,1,1,1
+access_pos_inventory,access_pos_inventory,model_pos_inventory,base.group_user,1,1,1,1
+access_pos_inventory_movement,access_pos_inventory_movement,model_pos_inventory_movement,base.group_user,1,1,1,1
+access_pos_product,access_pos_product,model_pos_product,base.group_user,1,1,1,1

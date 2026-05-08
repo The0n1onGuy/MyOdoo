@@ -1,18 +1,39 @@
 <odoo>
     <data>
-        <template id="report_visit_card">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <h2>Visita</h2>
-                        <p>Cliente: <span t-field="o.customer.name"/></p>
-                        <p>Descripcion: <span t-field="o.name"/></p>
-                        <p>Fecha: <span t-field="o.date" t-options='{"format": "dd/MM/yyyy"}'/></p>
+        <template id="storefront_layout" name="Storefront Layout">
+            <t t-call="website.layout">
+                <div id="wrap" class="container mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="display-4 mb-4">Catálogo de Productos</h2>
+                        </div>
                     </div>
-                </t>
+
+                    <div class="row">
+                        <t t-foreach="products" t-as="product">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0 rounded-lg">
+                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fa fa-shopping-bag fa-3x text-muted"/>
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        <span class="badge bg-secondary mb-2" t-field="product.category_id.name"/>
+                                        <h5 class="card-title font-weight-bold" t-field="product.name"/>
+                                        <p class="card-text text-muted small" t-field="product.sku"/>
+                                        <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                            <span class="h5 mb-0 text-primary">$<t t-esc="product.base_price"/></span>
+                                            <button class="btn btn-outline-dark btn-sm rounded-pill px-3 add-to-cart"
+                                                    t-att-data-product-id="product.id">
+                                                Seleccionar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
             </t>
-        </t>
-    </template>
+        </template>
     </data>
 </odoo>

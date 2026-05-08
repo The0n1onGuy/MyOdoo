@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class PosSale(models.Model):
     _name = 'pos.sale'
     _description = 'POS Sales Orders'
-    _inherit = 'pos.sale'
+
 
     ticket_number = fields.Char(string="Número de Ticket", required=True, copy=False)
     uuid = fields.Char(string="UUID", default=lambda self: str(uuid.uuid4()), readonly=True)
@@ -16,7 +16,7 @@ class PosSale(models.Model):
         ('TRANSFERENCIA', 'Transferencia')
     ], string="Método de Pago")
 
-    status_id = fields.Many2one('nexus.status', string="Estado")
+    status_id = fields.Many2one('pos.status', string="Estado")
     detail_ids = fields.One2many('pos.sale.detail', 'sale_id', string="Detalles de Venta")
 
     # Equivalent to a Service/Repository aggregate:

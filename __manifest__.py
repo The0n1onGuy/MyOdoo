@@ -17,14 +17,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management'],
+    'depends': ['base', 'sale_management', 'website'],
 
     # always loaded
     'data': [
         'views/views.xml'
         ,'views/templates.xml'
         ,'demo/demo.xml'
-        ,'reports/visit.xml'
+        #,'reports/visit.xml'
         ,'security/ir.model.access.csv'
         ,'security/security.xml'
     ],

@@ -8,11 +8,11 @@ class PosStorefront (http.Controller):
     def shop_index(self, **kwargs):
         # Fetch active products to populate the selection view
         products = request.env['pos.product'].search([('status_id.status_name', '=', 'ACTIVO')])
-        return request.render('custom_crm.storefront_template', {
+        return request.render('shopping_cart.storefront_layout', {
             'products': products,
         })
 
-    @http.route('/shop/checkout', type='json', auth='public', methods=['POST'], csrf=False)
+    @http.route('/shop/checkout', type='jsonrpc', auth='public', methods=['POST'], csrf=False)
     def checkout(self, cart_data):
         # Implementation of processPurchase logic
         sale_order = request.env['pos.sale'].action_process_checkout(cart_data)

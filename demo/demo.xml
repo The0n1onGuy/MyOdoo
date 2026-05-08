@@ -1,15 +1,40 @@
 <odoo>
-    <data>
-            <record id="demo_partner_1" model="res.partner">
-                <field name="name">Cliente Importado</field>
-            </record>
-          <record id="visit0" model="custom_crm.visit">
-            <field name="name">Visita importada</field>
-            <field name="customer" ref="demo_partner_1" />
-            <field name="date">2026-03-05</field>
-            <field name="type">P</field>
-            <field name="done">1</field>
-          </record>
+    <data noupdate="1">
+        <record id="status_activo" model="pos.status">
+            <field name="name">Activo</field>
+            <field name="status_name">ACTIVO</field>
+        </record>
 
+        <record id="cat_hardware" model="pos.category">
+            <field name="name">Hardware</field>
+            <field name="description">Componentes físicos y periféricos</field>
+        </record>
+
+        <record id="cat_software" model="pos.category">
+            <field name="name">Software</field>
+            <field name="description">Licencias y servicios digitales</field>
+        </record>
+
+        <record id="prod_mouse" model="pos.product">
+            <field name="name">Gaming Mouse Pro</field>
+            <field name="sku">HW-001</field>
+            <field name="base_price">59.99</field>
+            <field name="category_id" ref="cat_hardware"/>
+            <field name="status_id" ref="status_activo"/>
+        </record>
+
+        <record id="prod_license" model="pos.product">
+            <field name="name">Nexus Cloud License</field>
+            <field name="sku">SW-001</field>
+            <field name="base_price">199.00</field>
+            <field name="category_id" ref="cat_software"/>
+            <field name="status_id" ref="status_activo"/>
+        </record>
+
+        <record id="inv_mouse" model="pos.inventory">
+            <field name="product_id" ref="prod_mouse"/>
+            <field name="current_stock">50</field>
+            <field name="min_stock">10</field>
+        </record>
     </data>
 </odoo>
