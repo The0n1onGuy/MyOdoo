@@ -1,5 +1,5 @@
 {
-    'name': "custom_crm",
+    'name': "shopping_cart",
 
     'summary': "Modulo CRM para gestion de visitas",
 
