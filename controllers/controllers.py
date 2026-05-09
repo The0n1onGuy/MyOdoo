@@ -20,15 +20,32 @@ class PosStorefront (http.Controller):
             'bundles': all_bundles,
             'products': individual_products,
         })
-    ###def shop_index(self, **kwargs):
-        # Fetch active products to populate the selection view
-        products = request.env['pos.product'].search([('status_id.status_name', '=', 'ACTIVO')])
-        return request.render('shopping_cart.storefront_layout', {
-            'products': products,
+
+    @http.route('/ofertas', type='http', auth="public", website=True)
+    def page_offers(self, **kw):
+        # Fetch only bundles marked as seasonal
+        seasonal_bundles = request.env['pos.bundle'].sudo().search([('is_seasonal_offer', '=', True)])
+        normal_offers = request.env['pos.offer'].sudo().search([('active', '=', True)])
+        return request.render('shopping_cart.page_offers', {
+            'seasonal': seasonal_bundles
+            ,'normal_offers': normal_offers
         })
 
+    @http.route('/paquetes', type='http', auth="public", website=True)
+    def page_bundles(self, **kw):
+        # Fetch standard bundles (or all of them, depending on your preference)
+        all_bundles = request.env['pos.bundle'].sudo().search([])
+        return request.render('shopping_cart.page_bundles', {
+            'bundles': all_bundles
+        })
 
-
+    @http.route('/productos', type='http', auth="public", website=True)
+    def page_products(self, **kw):
+        # Fetch all products
+        all_products = request.env['pos.product'].sudo().search([])
+        return request.render('shopping_cart.page_products', {
+            'products': all_products
+        })
 
     @http.route('/shop/checkout', type='jsonrpc', auth='public', methods=['POST'], csrf=False)
     def checkout(self, cart_data):

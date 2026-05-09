@@ -17,17 +17,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management', 'website'],
+    'depends': ['base', 'web', 'sale_management', 'website'],
 
     # always loaded
     'data': [
-        'views/views.xml'
+        #'security/security.xml'
+        'security/ir.model.access.csv'
+        ,'views/views.xml'
         ,'views/templates.xml'
         ,'views/website_templates.xml'
         ,'demo/demo.xml'
         #,'reports/visit.xml'
-        ,'security/ir.model.access.csv'
-        ,'security/security.xml'
+
     ],
     # only loaded in demonstration mode
     'demo': [

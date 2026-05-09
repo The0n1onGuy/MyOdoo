@@ -5,9 +5,24 @@
             <field name="status_name">ACTIVO</field>
         </record>
 
+        <record id="status_inactivo" model="pos.status">
+            <field name="name">Inactivo</field>
+            <field name="status_name">INACTIVO</field>
+        </record>
+
         <record id="cat_hardware" model="pos.category">
             <field name="name">Hardware</field>
             <field name="description">Componentes físicos y periféricos</field>
+        </record>
+
+        <record id="cat_lego" model="pos.category">
+            <field name="name">LEGO</field>
+            <field name="description">Marca reconocida de juguetes de construccion</field>
+        </record>
+
+        <record id="cat_megaconstrux" model="pos.category">
+            <field name="name">MEGACONSTRUX</field>
+            <field name="description">Juguetes de construccion reconocida por videojuegos</field>
         </record>
 
         <record id="cat_software" model="pos.category">
